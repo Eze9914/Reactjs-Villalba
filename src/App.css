@@ -1,42 +1,167 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+
+:root {
+  --primary: #2c3e50;
+  --accent: #e74c3c;
+  --bg: #f4f6f8;
+  --white: #ffffff;
+  --text: #333333;
+  --max-width: 1200px; /* Ancho máximo de la página */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', 'Segoe UI', sans-serif;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+a {
+  text-decoration: none;
+}
+
+.container-custom {
+  max-width: var(--max-width);
+  margin: 0 auto; /* Esto centra el bloque horizontalmente */
+  padding: 0 20px; /* Margen interno para que no pegue a los bordes en celular */
+  width: 100%;
+}
+
+/* =========================================
+   NAVBAR
+   ========================================= */
+nav {
+  background-color: var(--white);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: 15px 0; /* El padding lateral lo maneja el container-custom */
+}
+
+/* Contenedor interno del nav para alinear elementos */
+.nav-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Categories {
+  display: flex;
+  gap: 25px;
+}
+
+.Option {
+  color: var(--text);
+  font-weight: 500;
+  transition: 0.3s;
+  font-size: 1rem;
+}
+
+.Option:hover {
+  color: var(--primary);
+}
+
+.ActiveOption {
+  color: var(--accent);
+  font-weight: 700;
+  border-bottom: 2px solid var(--accent);
+}
+
+/* =========================================
+   CATÁLOGO (LIST GROUP)
+   ========================================= */
+.ListGroup {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 30px;
+  padding: 40px 0;
+}
+
+h1 {
   text-align: center;
+  margin: 40px 0 20px 0;
+  color: var(--primary);
+  font-size: 2.2rem;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* =========================================
+   CARDS (ITEM)
+   ========================================= */
+article {
+  background: var(--white);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+article:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.12);
 }
 
-.card {
-  padding: 2em;
+article picture {
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  border-bottom: 1px solid #f0f0f0;
 }
 
-.read-the-docs {
-  color: #888;
+article img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Hace que la imagen llene el cuadro sin deformarse */
+  transition: transform 0.5s;
 }
+
+article:hover img {
+  transform: scale(1.05);
+}
+
+article header h2 {
+  font-size: 1.1rem;
+  margin: 15px;
+  text-align: center;
+  font-weight: 600;
+}
+
+article section {
+  padding: 0 20px;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+article footer {
+  margin-top: auto;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.ItemDetailContainer {
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+}
+/* Loader */
+.loader {
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid var(--accent);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+    margin: 50px auto;
+}
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
